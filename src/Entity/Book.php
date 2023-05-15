@@ -32,6 +32,7 @@ class Book
     #[Assert\Length(min: 3, minMessage : "Le nom de l'auteur doit contenir au moins 3 caractères")]
     private ?string $author = null;
 
+    #[Assert\NotBlank(groups: ["creation"])]
     #[Assert\Length(exactly: 4)]
     #[ORM\Column(length: 4, nullable: true)]
     private ?string $year = null;
