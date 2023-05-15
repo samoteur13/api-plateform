@@ -6,7 +6,7 @@ use ApiPlatform\Metadata\ApiResource;
 use App\Repository\BookRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ApiResource]
+#[ApiResource(paginationClientItemsPerPage: true)]
 #[ORM\Entity(repositoryClass: BookRepository::class)]
 class Book
 {
