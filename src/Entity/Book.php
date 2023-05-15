@@ -27,9 +27,9 @@ class Book
     #[ORM\Column(length: 255)]
     private ?string $title = null;
 
-    #[Assert\NotBlank]
-    #[Assert\Length(min: 3)]
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: "L'auteur doit être renseigné")]
+    #[Assert\Length(min: 3, minMessage : "Le nom de l'auteur doit contenir au moins 3 caractères")]
     private ?string $author = null;
 
     #[Assert\Length(exactly: 4)]
