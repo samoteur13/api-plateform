@@ -9,6 +9,7 @@ use ApiPlatform\Metadata\ApiFilter;
 use ApiPlatform\Metadata\ApiResource;
 use App\Repository\BookRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ApiFilter(SearchFilter::class, properties: ['title' => 'partial'])]
 #[ApiFilter(OrderFilter::class, properties: ['title'])]
@@ -22,12 +23,16 @@ class Book
     #[ApiProperty(readable: false)]
     private ?int $id = null;
 
+    #[Assert\NotBlank]
     #[ORM\Column(length: 255)]
     private ?string $title = null;
 
+    #[Assert\NotBlank]
+    #[Assert\Length(min: 3)]
     #[ORM\Column(length: 255)]
     private ?string $author = null;
 
+    #[Assert\Length(exactly: 4)]
     #[ORM\Column(length: 4, nullable: true)]
     private ?string $year = null;
 
