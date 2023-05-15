@@ -1,0 +1,8 @@
+services:
+  api:
+    build: .
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/srv/app
+    restart: unless-stopped
